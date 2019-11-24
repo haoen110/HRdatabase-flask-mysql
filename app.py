@@ -4,9 +4,8 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, IntegerFiel
 from passlib.hash import sha256_crypt
 from functools import wraps
 
-
+# Config Application
 app = Flask(__name__)
-# Config MySQL
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@127.0.0.1/sdsc5003'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
 db = SQLAlchemy(app)
@@ -14,6 +13,7 @@ connection = db.engine.raw_connection()
 cur = connection.cursor()
 
 
+# Create registration form
 class RegisterForm(Form):
     username = StringField('Username', [validators.Length(min=4, max=25)])
     email = StringField('Email', [validators.Length(min=6, max=50)])
@@ -21,7 +21,7 @@ class RegisterForm(Form):
                                           validators.EqualTo('confirm', message='Passwords do not match.')])
     confirm = PasswordField('Confirm password')
 
-
+# Registration Page
 @app.route('/register.html', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
@@ -39,11 +39,9 @@ def register():
                           (username, email, password))
         flash('Registered Successfully. Please login.', 'success')
         return redirect(url_for('login'))
-    # else:
-    #     flash('Passwords do not match.', 'danger')
     return render_template('register.html', form=form)
 
-
+# Login Page
 @app.route('/', methods=['GET', 'POST'])
 def login():
     session['logged_in'] = False
@@ -67,7 +65,7 @@ def login():
             flash('Wrong Username.', 'danger')
     return render_template('login.html')
 
-
+# Forget Password Page
 @app.route('/forgot-password.html')
 def forgot_password():
     return render_template('forgot-password.html')
@@ -83,12 +81,126 @@ def is_logged_in(f):
             return redirect(url_for('login'))
     return wrap
 
-
+# Index
 @app.route('/index.html')
 @is_logged_in
 def index():
     return render_template('index.html')
 
+
+# hrForm Class, Please add more attributes here! including dept's attr and contract's attr
+class HRForm(Form):
+    eid = IntegerField('eid', [validators.DataRequired()])
+    ename = StringField('Name', [validators.Length(min=1)])
+    gender = StringField('Gender', [validators.Length(min=1)])
+    age = IntegerField('Age', [validators.DataRequired()])
+    salary = IntegerField('Salary', [validators.DataRequired()])
+    department = StringField('Department', [validators.Length(min=1)])
+
+# Recruitment Page (for addition and deletion of employees)
+@app.route('/recruitment.html', methods=['GET', 'POST'])
+@is_logged_in
+def recruitment():
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT * FROM employees;")
+    employees = cur.fetchall()
+    return render_template('recruitment.html', employees=employees)
+
+# Emp Addition
+@app.route('/add_employee', methods=['POST'])
+@is_logged_in
+def add_employee():
+    form = HRForm(request.form)
+    if request.method == 'POST' and form.validate():
+        eid = form.eid.data
+        name = form.ename.data
+        gender = form.gender.data
+        age = form.age.data
+        salary = form.salary.data
+        department = form.department.data
+        try:
+            db.engine.execute("INSERT INTO employees(eid, name, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
+                        (eid, name, gender, age, salary, department))
+        except:
+            flash('Insert Unsuccessfully, Please Check Again!', 'danger')
+            return redirect(url_for('recruitment'))
+        flash('Insert Successfully!', 'success')
+        return redirect(url_for('recruitment'))
+    return render_template('recruitment.html', form=form)
+
+# Emp Deletion
+@app.route('/recruitment.html/<string:eid>', methods=['GET', 'POST'])
+@is_logged_in
+def delete_employee(eid):
+    if request.method == 'POST':
+        db.engine.execute("DELETE FROM employees WHERE eid = %s", [eid])
+        flash('Delete Successfully!', 'success')
+        return redirect(url_for('recruitment'))
+
+# Employee Page (Blue One)
+@app.route('/employee.html', methods=['GET', 'POST'])
+@is_logged_in
+def employee():
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT * FROM employees;")
+    employees = cur.fetchall()
+    return render_template('employee.html', employees=employees)
+
+# Selection of Employee
+@app.route('/search_employee', methods=['POST', 'GET'])
+@is_logged_in
+def search_employee():
+    form = HRForm(request.form)
+    eid = form.eid.data
+    name = form.ename.data
+    print(name)
+    gender = form.gender.data
+    age = form.age.data
+    salary = form.salary.data
+    department = form.department.data
+    print(department)
+    cur = db.engine.raw_connection().cursor()
+    if eid is not None:
+        cur.execute("select * from employees where eid =%d;" % eid)
+    else:
+        cur.execute("select * from employees \
+                     where name like '%%%s%%'\
+                     and gender like '%%%s%%'\
+                     and department like '%%%s%%';"
+                    % (name, gender, department))
+    employees = cur.fetchall()
+    flash('Search Successfully!', 'success')
+    return render_template('employee.html', employees=employees)
+
+# Department Page (Yellow One)
+@app.route('/department.html', methods=['GET', 'POST'])
+@is_logged_in
+def department():
+    return render_template('department.html')
+
+
+if __name__ == "__main__":
+    app.secret_key = '123'
+    app.run(debug=True)
+    print("Server is running...")
+
+
+
+
+
+
+
+
+
+# @app.route('/charts.html')
+# @is_logged_in
+# def charts():
+#     return render_template('charts.html')
+
+# @app.route('/tables.html')
+# @is_logged_in
+# def tables():
+#     return render_template('tables.html')
 
 # # Article Form Class
 # class ArticleForm(Form):
@@ -117,109 +229,3 @@ def index():
 #         flash('Insert Successfully!', 'success')
 #         return redirect(url_for('table1'))
 #     return render_template('table1.html', form=form)
-
-# Employee Form Class
-class EmployeeForm(Form):
-    eid = IntegerField('eid', [validators.DataRequired()])
-    name = StringField('Name', [validators.Length(min=1)])
-    gender = StringField('Gender', [validators.Length(min=1)])
-    age = IntegerField('Age', [validators.DataRequired()])
-    salary = IntegerField('Salary', [validators.DataRequired()])
-    department = StringField('Department', [validators.Length(min=1)])
-
-
-@app.route('/recruitment.html', methods=['GET', 'POST'])
-@is_logged_in
-def recruitment():
-    cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM employees;")
-    employees = cur.fetchall()
-    return render_template('recruitment.html', employees=employees)
-
-
-@app.route('/add_employee', methods=['POST'])
-@is_logged_in
-def add_employee():
-    form = EmployeeForm(request.form)
-    if request.method == 'POST' and form.validate():
-        eid = form.eid.data
-        name = form.name.data
-        gender = form.gender.data
-        age = form.age.data
-        salary = form.salary.data
-        department = form.department.data
-        try:
-            db.engine.execute("INSERT INTO employees(eid, name, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
-                        (eid, name, gender, age, salary, department))
-        except:
-            flash('Insert Unsuccessfully, Please Check Again!', 'danger')
-            return redirect(url_for('recruitment'))
-        flash('Insert Successfully!', 'success')
-        return redirect(url_for('recruitment'))
-    return render_template('recruitment.html', form=form)
-
-
-@app.route('/recruitment.html/<string:eid>', methods=['GET', 'POST'])
-@is_logged_in
-def delete_employee(eid):
-    if request.method == 'POST':
-        db.engine.execute("DELETE FROM employees WHERE eid = %s", [eid])
-        flash('Delete Successfully!', 'success')
-        return redirect(url_for('recruitment'))
-
-
-@app.route('/employee.html', methods=['GET', 'POST'])
-@is_logged_in
-def employee():
-    cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM employees;")
-    employees = cur.fetchall()
-    return render_template('employee.html', employees=employees)
-
-@app.route('/search_employee', methods=['POST', 'GET'])
-@is_logged_in
-def search_employee():
-    form = EmployeeForm(request.form)
-    eid = form.eid.data
-    name = form.name.data
-    print(name)
-    gender = form.gender.data
-    age = form.age.data
-    salary = form.salary.data
-    department = form.department.data
-    print(department)
-    cur = db.engine.raw_connection().cursor()
-    if eid is not None:
-        cur.execute("select * from employees where eid =%d;" % eid)
-    else:
-        cur.execute("select * from employees \
-                     where name like '%%%s%%'\
-                     and gender like '%%%s%%'\
-                     and department like '%%%s%%';"
-                    % (name, gender, department))
-    employees = cur.fetchall()
-    flash('Search Successfully!', 'success')
-    return render_template('employee.html', employees=employees)
-    # return render_template('employee.html', form=form)
-
-
-# @app.route('/charts.html')
-# @is_logged_in
-# def charts():
-#     return render_template('charts.html')
-
-# @app.route('/tables.html')
-# @is_logged_in
-# def tables():
-#     return render_template('tables.html')
-
-
-if __name__ == "__main__":
-    app.secret_key = '123'
-    app.run(debug=True)
-    print("Server is running...")
-    # db.create_all()
-    # db.engine.execute("insert into user(username, email, password, if_admin) values('haoen110', 'haoen110@163.com', '123456', 1);")
-    # result = db.engine.execute('select * from user;')
-    # for row in result:
-    # print(row)

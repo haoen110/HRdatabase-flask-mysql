@@ -26,17 +26,3 @@ CREATE TABLE employees(eid int PRIMARY KEY,
                        salary int,
                        department varchar(30),
                        address varchar(30));
-
-create table department(did int,
-                        dname varchar(30),
-                        managerid int,
-                        budget int;
-
-create table contracts (eid int,
-                        cid int,
-                        did int,
-                        primary key (eeid,cid,did),
-constraint eeid foreign key (eeid) references employees (eeid) on delete cascade on update cascade,
-constraint cid foreign key (cid) references contract (cid) on delete cascade on update cascade,
-constraint did foreign key (did) references department (did) on delete cascade on update cascade
-);
