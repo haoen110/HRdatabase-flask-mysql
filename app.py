@@ -120,12 +120,52 @@ def index():
 
 # Employee Form Class
 class EmployeeForm(Form):
-    # eid = IntegerField('eid', [validators.DataRequired()])
+    eid = IntegerField('eid', [validators.DataRequired()])
     name = StringField('Name', [validators.Length(min=1)])
     gender = StringField('Gender', [validators.Length(min=1)])
     age = IntegerField('Age', [validators.DataRequired()])
     salary = IntegerField('Salary', [validators.DataRequired()])
     department = StringField('Department', [validators.Length(min=1)])
+
+
+@app.route('/recruitment.html', methods=['GET', 'POST'])
+@is_logged_in
+def recruitment():
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT * FROM employees;")
+    employees = cur.fetchall()
+    return render_template('recruitment.html', employees=employees)
+
+
+@app.route('/add_employee', methods=['POST'])
+@is_logged_in
+def add_employee():
+    form = EmployeeForm(request.form)
+    if request.method == 'POST' and form.validate():
+        eid = form.eid.data
+        name = form.name.data
+        gender = form.gender.data
+        age = form.age.data
+        salary = form.salary.data
+        department = form.department.data
+        try:
+            db.engine.execute("INSERT INTO employees(eid, name, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
+                        (eid, name, gender, age, salary, department))
+        except:
+            flash('Insert Unsuccessfully, Please Check Again!', 'danger')
+            return redirect(url_for('recruitment'))
+        flash('Insert Successfully!', 'success')
+        return redirect(url_for('recruitment'))
+    return render_template('recruitment.html', form=form)
+
+
+@app.route('/recruitment.html/<string:eid>', methods=['GET', 'POST'])
+@is_logged_in
+def delete_employee(eid):
+    if request.method == 'POST':
+        db.engine.execute("DELETE FROM employees WHERE eid = %s", [eid])
+        flash('Delete Successfully!', 'success')
+        return redirect(url_for('recruitment'))
 
 
 @app.route('/employee.html', methods=['GET', 'POST'])
@@ -136,32 +176,31 @@ def employee():
     employees = cur.fetchall()
     return render_template('employee.html', employees=employees)
 
-
-@app.route('/add_employee', methods=['POST'])
+@app.route('/search_employee', methods=['POST', 'GET'])
 @is_logged_in
-def add_employee():
+def search_employee():
     form = EmployeeForm(request.form)
-    if request.method == 'POST' and form.validate():
-        # eid = form.eid.data
-        name = form.name.data
-        gender = form.gender.data
-        age = form.age.data
-        salary = form.salary.data
-        department = form.department.data
-        db.engine.execute("INSERT INTO employees(name, gender, age, salary, department, insert_hr) VALUES (%s, %s, %s, %s, %s, %s)",
-                    (name, gender, age, salary, department, session['username']))
-        flash('Insert Successfully!', 'success')
-        return redirect(url_for('employee'))
-    return render_template('employee.html', form=form)
-
-
-@app.route('/employee.html/<string:eid>', methods=['GET', 'POST'])
-@is_logged_in
-def delete_employee(eid):
-    if request.method == 'POST':
-        db.engine.execute("DELETE FROM employees WHERE eid = %s", [eid])
-        flash('Delete Successfully!', 'success')
-        return redirect(url_for('employee'))
+    eid = form.eid.data
+    name = form.name.data
+    print(name)
+    gender = form.gender.data
+    age = form.age.data
+    salary = form.salary.data
+    department = form.department.data
+    print(department)
+    cur = db.engine.raw_connection().cursor()
+    if eid is not None:
+        cur.execute("select * from employees where eid =%d;" % eid)
+    else:
+        cur.execute("select * from employees \
+                     where name like '%%%s%%'\
+                     and gender like '%%%s%%'\
+                     and department like '%%%s%%';"
+                    % (name, gender, department))
+    employees = cur.fetchall()
+    flash('Search Successfully!', 'success')
+    return render_template('employee.html', employees=employees)
+    # return render_template('employee.html', form=form)
 
 
 # @app.route('/charts.html')

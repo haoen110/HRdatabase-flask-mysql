@@ -18,11 +18,25 @@ CREATE TABLE users(id INT(11) AUTO_INCREMENT PRIMARY KEY,
 --                       transactor VARCHAR(30),
 --                       issue_date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP)
 
-CREATE TABLE employees(eid INT(11) AUTO_INCREMENT PRIMARY KEY,
-                       name VARCHAR(30),
-                       gender VARCHAR(10),
-                       age INT(8),
-                       salary INT(30),
-                       department VARCHAR(30),
-                       insert_hr VARCHAR(30),
-                       insert_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+CREATE TABLE employees(eid int PRIMARY KEY,
+                       ename varchar(30),
+                       gender varchar(10),
+                       age int,
+                       salary int,
+                       department varchar(30),
+                       address varchar(30));
+
+create table department(did int,
+                        dname varchar(30),
+                        managerid int,
+                        budget int;
+
+create table contracts (eid int,
+                        cid int,
+                        did int,
+                        primary key (eeid,cid,did),
+constraint eeid foreign key (eeid) references employees (eeid) on delete cascade on update cascade,
+constraint cid foreign key (cid) references contract (cid) on delete cascade on update cascade,
+constraint did foreign key (did) references department (did) on delete cascade on update cascade
+);
