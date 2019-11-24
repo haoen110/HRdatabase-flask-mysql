@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tb.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recruitment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recruitment.html" afterDir="false" />
-    </list>
+    <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,8 +119,16 @@
       <workItem from="1572163017071" duration="26078000" />
       <workItem from="1572612583541" duration="3217000" />
       <workItem from="1574557186147" duration="191000" />
-      <workItem from="1574557389354" duration="20807000" />
+      <workItem from="1574557389354" duration="21313000" />
     </task>
+    <task id="LOCAL-00001" summary="ready to edit department">
+      <created>1574586733803</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574586733803</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +151,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
+    <MESSAGE value="ready to edit department" />
+    <option name="LAST_COMMIT_MESSAGE" value="ready to edit department" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/HRdatabase_flask_mysql$database.coverage" NAME="database Coverage Results" MODIFIED="1574558511602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
