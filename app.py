@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, flash, request, redirect, url_for, logging, session
-from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from wtforms import Form, StringField, TextAreaField, PasswordField, IntegerField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
 
@@ -90,40 +90,78 @@ def index():
     return render_template('index.html')
 
 
-# Article Form Class
-class ArticleForm(Form):
-    title = StringField('Title', [validators.Length(min=1)])
-    body = TextAreaField('Body', [validators.Length(min=1)])
+# # Article Form Class
+# class ArticleForm(Form):
+#     title = StringField('Title', [validators.Length(min=1)])
+#     body = TextAreaField('Body', [validators.Length(min=1)])
+#
+#
+# @app.route('/table1.html', methods=['GET', 'POST'])
+# @is_logged_in
+# def table1():
+#     cur = db.engine.raw_connection().cursor()
+#     cur.execute("SELECT * FROM articles;")
+#     articles = cur.fetchall()
+#     return render_template('table1.html', articles=articles)
+#
+#
+# @app.route('/add_article', methods=['POST'])
+# @is_logged_in
+# def add_article():
+#     form = ArticleForm(request.form)
+#     if request.method == 'POST' and form.validate():
+#         title = form.title.data
+#         body = form.body.data
+#         db.engine.execute("INSERT INTO articles(title, body, transactor) VALUES (%s, %s, %s)",
+#                     (title, body, session['username']))
+#         flash('Insert Successfully!', 'success')
+#         return redirect(url_for('table1'))
+#     return render_template('table1.html', form=form)
+
+# Employee Form Class
+class EmployeeForm(Form):
+    # eid = IntegerField('eid', [validators.DataRequired()])
+    name = StringField('Name', [validators.Length(min=1)])
+    gender = StringField('Gender', [validators.Length(min=1)])
+    age = IntegerField('Age', [validators.DataRequired()])
+    salary = IntegerField('Salary', [validators.DataRequired()])
+    department = StringField('Department', [validators.Length(min=1)])
 
 
-@app.route('/table1.html', methods=['GET', 'POST'])
+@app.route('/employee.html', methods=['GET', 'POST'])
 @is_logged_in
-def table1():
+def employee():
     cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM articles;")
-    articles = cur.fetchall()
-    return render_template('table1.html', articles=articles)
+    cur.execute("SELECT * FROM employees;")
+    employees = cur.fetchall()
+    return render_template('employee.html', employees=employees)
 
-@app.route('/add_article', methods=['POST'])
+
+@app.route('/add_employee', methods=['POST'])
 @is_logged_in
-def add_article():
-    form = ArticleForm(request.form)
+def add_employee():
+    form = EmployeeForm(request.form)
     if request.method == 'POST' and form.validate():
-        title = form.title.data
-        body = form.body.data
-        db.engine.execute("INSERT INTO articles(title, body, transactor) VALUES (%s, %s, %s)",
-                    (title, body, session['username']))
+        # eid = form.eid.data
+        name = form.name.data
+        gender = form.gender.data
+        age = form.age.data
+        salary = form.salary.data
+        department = form.department.data
+        db.engine.execute("INSERT INTO employees(name, gender, age, salary, department, insert_hr) VALUES (%s, %s, %s, %s, %s, %s)",
+                    (name, gender, age, salary, department, session['username']))
         flash('Insert Successfully!', 'success')
-        return redirect(url_for('table1'))
-    return render_template('table1.html', form=form)
+        return redirect(url_for('employee'))
+    return render_template('employee.html', form=form)
 
-@app.route('/table1.html/<string:id>', methods=['GET', 'POST'])
+
+@app.route('/employee.html/<string:eid>', methods=['GET', 'POST'])
 @is_logged_in
-def delete_article(id):
+def delete_employee(eid):
     if request.method == 'POST':
-        db.engine.execute("DELETE FROM articles WHERE id = %s", [id])
+        db.engine.execute("DELETE FROM employees WHERE eid = %s", [eid])
         flash('Delete Successfully!', 'success')
-        return redirect(url_for('table1'))
+        return redirect(url_for('employee'))
 
 
 # @app.route('/charts.html')
@@ -138,7 +176,7 @@ def delete_article(id):
 
 
 if __name__ == "__main__":
-    app.secret_key = "123"
+    app.secret_key = '123'
     app.run(debug=True)
     print("Server is running...")
     # db.create_all()
