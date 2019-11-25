@@ -81,62 +81,6 @@
                 <span>Attendance</span>
             </a>
         </li>
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Employees</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="employee.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Departments</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Contracts</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Attendance</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
     </ul>
 
 
@@ -187,31 +131,108 @@
 {#                <p><input class="btn btn-primary" type="submit" value="Search"></p>#}
 {#            </form>#}
 
-            <!-- Area Chart Example-->
+        <!-- Area Chart Example-->
+        <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
+
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-chart-bar"></i>
-                            Bar Chart Example
+                            部门预算
                         </div>
                         <div class="card-body">
                             <canvas height="50" id="myBarChart" width="100%"></canvas>
                         </div>
+                        <script>
+                            var ctx = document.getElementById("myBarChart");
+                            var myLineChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ["软件", "硬件", "AI"],
+                                    datasets: [{
+                                        label: "Budget",
+                                        backgroundColor: "rgb(187,216,62)",
+                                        borderColor: "rgb(130,216,133)",
+                                        data: [20000, 30000, 100000],
+                                    }],
+                                },
+                                options: {
+                                    scales: {
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false
+                                            },
+                                            ticks: {
+                                                maxTicksLimit: 6
+                                            }
+                                        }],
+                                        yAxes: [{
+                                            ticks: {
+                                                min: 0,
+                                                max: 100000,
+                                                maxTicksLimit: 5
+                                            },
+                                            gridLines: {
+                                                display: true
+                                            }
+                                        }],
+                                    },
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-chart-pie"></i>
-                            Pie Chart Example
+                            部门人数分布
                         </div>
                         <div class="card-body">
                             <canvas height="100" id="myPieChart" width="100%"></canvas>
                         </div>
+
+                        <script>
+                            var ctx = document.getElementById("myPieChart");
+                            var myPieChart = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: ["软件", "硬件", "AI"],
+                                    datasets: [{
+                                        data: [15, 20, 35],
+                                        backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+                                    }],
+                                },
+                            });
+                        </script>
+
                     </div>
                 </div>
             </div>
+
+
+
+{#                <div>#}
+{#                    <canvas height="100" id="myPieChart" width="100%" ></canvas>#}
+{#                </div>#}
+{#            <script>#}
+{#                var ctx = document.getElementById("myPieChart");#}
+{#var myPieChart = new Chart(ctx, {#}
+{#  type: 'pie',#}
+{#  data: {#}
+{#    labels: ["Blue", "Red", "Yellow", "Green"],#}
+{#    datasets: [{#}
+{#      data: [12.21, 15.58, 11.25, 1.00],#}
+{#      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#fff928'],#}
+{#    }],#}
+{#  },#}
+{#});#}
+{#            </script>#}
+
 
             <div class="card mb-3">
                 <div class="card-header">
@@ -223,30 +244,20 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>Eid</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Age</th>
-                                <th>Salary</th>
+                                <th>Did</th>
                                 <th>Department</th>
+                                <th>Manager</th>
+                                <th>Budget</th>
 {#                                <th></th>#}
                             </tr>
                             </thead>
                             <tbody>
-                            {% for employee in employees %}
+                            {% for department in departments %}
                             <tr>
-                                <td>{{employee[0]}}</td>
-                                <td>{{employee[1]}}</td>
-                                <td>{{employee[2]}}</td>
-                                <td>{{employee[3]}}</td>
-                                <td>{{employee[4]}}</td>
-                                <td>{{employee[5]}}</td>
-{#                                <th>#}
-{#                                    <form action="{{url_for('delete_employee', eid=employee[0])}}" method="post">#}
-{#                                        <input type="hidden" name="method" value="DELETE">#}
-{#                                        <input type="submit" value="Delete" class="btn btn-danger">#}
-{#                                    </form>#}
-{#                                </th>#}
+                                <td>{{department[0]}}</td>
+                                <td>{{department[1]}}</td>
+                                <td>{{department[2]}}</td>
+                                <td>{{department[3]}}</td>
                             </tr>
                             {% endfor %}
                             </tbody>
@@ -262,7 +273,7 @@
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright © SDSC 5003</span>
+                    <span>Copyright © SDSC 5003 Fantastic Four</span>
                 </div>
             </div>
         </footer>
@@ -295,10 +306,10 @@
 <script src="./static/js/sb-admin.min.js"></script>
 
 <!-- Demo scripts for this page-->
-<script src="./static/js/demo/datatables-demo.js"></script>
-<script src="./static/js/demo/chart-area-demo.js"></script>
-<script src="./static/js/demo/chart-bar-demo.js"></script>
-<script src="./static/js/demo/chart-pie-demo.js"></script>
+{#<script src="./static/js/demo/datatables-demo.js"></script>#}
+{#<script src="./static/js/demo/chart-area-demo.js"></script>#}
+{#<script src="./static/js/demo/chart-bar-demo.js"></script>#}
+{#<script src="./static/js/demo/chart-pie-demo.js"></script>#}
 
 </body>
 
