@@ -27,10 +27,16 @@
 - Table form will provide a simple search function.
 - Every ends of columns are delete buttons which can be used to delete this record.     
 
-### Employees description
+### Employees Description
 - Show the entire information of employees.
 - Introduce Fuzzy search on name / gender / department to search a specified employee.
 - Implement some basic visualization function below the search table.
+
+### Department Description
+
+### Contracts Description
+
+### Attendance Description
 
 
 ## Requirements

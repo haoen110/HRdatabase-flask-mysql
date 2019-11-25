@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlserver&#10;mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -123,7 +123,7 @@
       <workItem from="1572612583541" duration="3217000" />
       <workItem from="1574557186147" duration="191000" />
       <workItem from="1574557389354" duration="22552000" />
-      <workItem from="1574642291798" duration="2062000" />
+      <workItem from="1574642291798" duration="2827000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>
@@ -139,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574587346459</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update readme">
+      <created>1574644403249</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574644403249</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +170,8 @@
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
     <MESSAGE value="ready to edit department" />
-    <option name="LAST_COMMIT_MESSAGE" value="ready to edit department" />
+    <MESSAGE value="update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
