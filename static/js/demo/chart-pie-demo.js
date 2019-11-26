@@ -7,10 +7,10 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ["Blue", "Red", "Yellow", "Green"],
+    labels: ["Security Department", "Financial Department", "Official Department", "Peace Hotel", "Exhibition Center", "Support Department", "Property Department"],
     datasets: [{
-      data: [12.21, 15.58, 11.25, 8.32],
-      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+      data: [68, 11, 22, 69, 34, 25, 23],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#a52a2a', 'cornsilk', 'deeppink'],
     }],
   },
 });

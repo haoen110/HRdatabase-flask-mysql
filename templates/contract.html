@@ -88,23 +88,23 @@
 
         <div class="container-fluid">
 
-            <h1>Department</h1>
-            <h4>Information about departments.</h4>
-{#            {% include '_messages.html' %}#}
-{#            {% from "_formhelpers.html" import render_field %}#}
-{#            <form method="POST" action="{{url_for('search_employee')}}" id="ef">#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="eid" class="form-control" placeholder="Eid"#}
-{#                           autofocus="autofocus" value={{ request.form.eid }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="ename" class="form-control" placeholder="Name"#}
-{#                           autofocus="autofocus" value={{ request.form.ename }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="gender" class="form-control" placeholder="Gender"#}
-{#                           autofocus="autofocus" value={{ request.form.gender }}>#}
-{#                </div>#}
+            <h1>Contracts</h1>
+            <h4>Simply input some slices of information about contracts to search.</h4>
+            {% include '_messages.html' %}
+            {% from "_formhelpers.html" import render_field %}
+            <form method="POST" action="{{url_for('search_employee')}}" id="ef">
+                <div class="form-group">
+                    <input type="text" name="eid" class="form-control" placeholder="Eid"
+                           autofocus="autofocus" value={{ request.form.eid }}>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="ename" class="form-control" placeholder="Name"
+                           autofocus="autofocus" value={{ request.form.ename }}>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="gender" class="form-control" placeholder="Gender"
+                           autofocus="autofocus" value={{ request.form.gender }}>
+                </div>
 {#                <div class="form-group">#}
 {#                    <input type="text" name="age" class="form-control" placeholder="Age"#}
 {#                           autofocus="autofocus" value={{ request.form.age }}>#}
@@ -113,10 +113,14 @@
 {#                    <input type="text" name="salary" class="form-control" placeholder="Salary"#}
 {#                           autofocus="autofocus" value={{ request.form.salary }}>#}
 {#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="department" class="form-control" placeholder="Department"#}
-{#                           autofocus="autofocus" value={{ request.form.department }}>#}
-{#                </div>#}
+                <div class="form-group">
+                    <input type="text" name="department" class="form-control" placeholder="Department"
+                           autofocus="autofocus" value={{ request.form.department }}>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="address" class="form-control" placeholder="Address"
+                           autofocus="autofocus" value={{ request.form.address }}>
+                </div>
 {#                <div class="input-group mb-3">#}
 {#                  <div class="input-group-prepend">#}
 {#                    <label class="input-group-text" for="inputGroupSelect01">Department</label>#}
@@ -127,123 +131,42 @@
 {#                    <option name="department" value={{ request.form.department }}>Hardware</option>#}
 {#                  </select>#}
 {#                </div>#}
-{##}
-{#                <p><input class="btn btn-primary" type="submit" value="Search"></p>#}
-{#            </form>#}
 
-        <!-- Area Chart Example-->
-        <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar"></i>
-                            Department Budget
-                        </div>
-                        <div class="card-body">
-                            <canvas height="50" id="myBarChart" width="100%"></canvas>
-                        </div>
-                        <script>
-                            var ctx = document.getElementById("myBarChart");
-                            var myLineChart = new Chart(ctx, {
-                                type: 'bar',
-                                data: {
-                                    labels: ["软件", "硬件", "AI"],
-                                    datasets: [{
-                                        label: "Budget",
-                                        backgroundColor: "rgba(2,117,216,1)",
-                                        borderColor: "rgba(2,117,216,1)",
-                                        data: [20000, 30000, 100000],
-                                    }],
-                                },
-                                options: {
-                                    scales: {
-                                        xAxes: [{
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                maxTicksLimit: 6
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            ticks: {
-                                                min: 0,
-                                                max: 100000,
-                                                maxTicksLimit: 5
-                                            },
-                                            gridLines: {
-                                                display: true
-                                            }
-                                        }],
-                                    },
-                                    legend: {
-                                        display: true
-                                    }
-                                }
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <i class="fas fa-chart-pie"></i>
-                            People Distribution
-                        </div>
-                        <div class="card-body">
-                            <canvas height="100" id="myPieChart" width="100%"></canvas>
-                        </div>
-
-                        <script>
-                            var ctx = document.getElementById("myPieChart");
-                            var myPieChart = new Chart(ctx, {
-                                type: 'pie',
-                                data: {
-                                    labels: ["软件", "硬件", "AI"],
-                                    datasets: [{
-                                        data: [15, 20, 35],
-                                        backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
-                                    }],
-                                },
-                            });
-                        </script>
-
-                    </div>
-                </div>
-            </div>
-
-
+                <p><input class="btn btn-primary" type="submit" value="Search"></p>
+            </form>
 
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    Department Data
+                    Contract Data
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
+                                <th>Cid</th>
+                                <th>Eid</th>
                                 <th>Did</th>
-                                <th>Department</th>
-                                <th>ManagerID</th>
-                                <th>Manager</th>
-                                <th>Budget</th>
-                                <th>Total</th>
+                                <th>Start</th>
+                                <th>End</th>
 {#                                <th></th>#}
                             </tr>
                             </thead>
                             <tbody>
-                            {% for department in departments %}
+                            {% for contract in contracts %}
                             <tr>
-                                <td>{{department[0]}}</td>
-                                <td>{{department[1]}}</td>
-                                <td>{{department[2]}}</td>
-                                <td>{{department[3]}}</td>
-                                <td>{{department[4]}}</td>
-                                <td>{{department[6]}}</td>
+                                <td>{{contract[0]}}</td>
+                                <td>{{contract[1]}}</td>
+                                <td>{{contract[2]}}</td>
+                                <td>{{contract[3]}}</td>
+                                <td>{{contract[4]}}</td>
+{#                                <th>#}
+{#                                    <form action="{{url_for('delete_employee', eid=employee[0])}}" method="post">#}
+{#                                        <input type="hidden" name="method" value="DELETE">#}
+{#                                        <input type="submit" value="Delete" class="btn btn-danger">#}
+{#                                    </form>#}
+{#                                </th>#}
                             </tr>
                             {% endfor %}
                             </tbody>
@@ -284,7 +207,6 @@
 <script src="./static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Page level plugin JavaScript-->
-<script src="./static/vendor/chart.js/Chart.min.js"></script>
 <script src="./static/vendor/datatables/jquery.dataTables.js"></script>
 <script src="./static/vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -293,9 +215,6 @@
 
 <!-- Demo scripts for this page-->
 <script src="./static/js/demo/datatables-demo.js"></script>
-{#<script src="./static/js/demo/chart-area-demo.js"></script>#}
-{#<script src="./static/js/demo/chart-bar-demo.js"></script>#}
-{#<script src="./static/js/demo/chart-pie-demo.js"></script>#}
 
 </body>
 

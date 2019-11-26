@@ -28,7 +28,7 @@ def register():
     if request.method == 'POST' and form.validate():
         username = form.username.data
         email = form.email.data
-        password = sha256_crypt.encrypt(str(form.password.data))
+        password = sha256_crypt.hash(str(form.password.data))
         # Execute MySQL
         cur.execute("SELECT * FROM users WHERE username = %s;", username)
         result = cur.fetchone()
@@ -90,12 +90,13 @@ def index():
 
 # hrForm Class, Please add more attributes here! including dept's attr and contract's attr
 class HRForm(Form):
-    eid = IntegerField('eid', [validators.DataRequired()])
+    eid = IntegerField('Eid', [validators.DataRequired()])
     ename = StringField('Name', [validators.Length(min=1)])
     gender = StringField('Gender', [validators.Length(min=1)])
     age = IntegerField('Age', [validators.DataRequired()])
     salary = IntegerField('Salary', [validators.DataRequired()])
     department = StringField('Department', [validators.Length(min=1)])
+    address = StringField('Address', [validators.Length(min=1)])
 
 # Recruitment Page (for addition and deletion of employees)
 @app.route('/recruitment.html', methods=['GET', 'POST'])
@@ -113,14 +114,14 @@ def add_employee():
     form = HRForm(request.form)
     if request.method == 'POST' and form.validate():
         eid = form.eid.data
-        name = form.ename.data
+        ename = form.ename.data
         gender = form.gender.data
         age = form.age.data
         salary = form.salary.data
         department = form.department.data
         try:
-            db.engine.execute("INSERT INTO employees(eid, name, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
-                        (eid, name, gender, age, salary, department))
+            db.engine.execute("INSERT INTO employees(eid, ename, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
+                        (eid, ename, gender, age, salary, department))
         except:
             flash('Insert Unsuccessfully, Please Check Again!', 'danger')
             return redirect(url_for('recruitment'))
@@ -152,22 +153,20 @@ def employee():
 def search_employee():
     form = HRForm(request.form)
     eid = form.eid.data
-    name = form.ename.data
-    print(name)
+    ename = form.ename.data
     gender = form.gender.data
-    age = form.age.data
-    salary = form.salary.data
     department = form.department.data
-    print(department)
+    address = form.address.data
     cur = db.engine.raw_connection().cursor()
     if eid is not None:
         cur.execute("select * from employees where eid =%d;" % eid)
     else:
         cur.execute("select * from employees \
-                     where name like '%%%s%%'\
+                     where ename like '%%%s%%'\
                      and gender like '%%%s%%'\
-                     and department like '%%%s%%';"
-                    % (name, gender, department))
+                     and department like '%%%s%%'\
+                     and address like '%%%s%%';"
+                    % (ename, gender, department, address))
     employees = cur.fetchall()
     flash('Search Successfully!', 'success')
     return render_template('employee.html', employees=employees)
@@ -176,7 +175,34 @@ def search_employee():
 @app.route('/department.html', methods=['GET', 'POST'])
 @is_logged_in
 def department():
-    return render_template('department.html')
+    cur = db.engine.raw_connection().cursor()
+    cur.execute('''select * from departments,
+            (select emp.department, count(emp.eid) as Total
+            from employees emp
+            group by emp.department
+            order by emp.department) as tp
+            where departments.dname = tp.department;''')
+    departments = cur.fetchall()
+    return render_template('department.html', departments=departments)
+
+# Contract Page (Green One)
+@app.route('/contract.html', methods=['GET', 'POST'])
+@is_logged_in
+def contract():
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT * FROM contracts;")
+    contracts = cur.fetchall()
+    return render_template('contract.html', contracts=contracts)
+
+
+# Attendance Page (Red One)
+@app.route('/attendance.html', methods=['GET', 'POST'])
+@is_logged_in
+def attendance():
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT * FROM attendance_owned;")
+    attendances = cur.fetchall()
+    return render_template('attendance.html', attendances=attendances)
 
 
 if __name__ == "__main__":

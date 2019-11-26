@@ -2,8 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sql/attendance.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/attendance.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/contracts.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/contracts.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/departments.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/departments.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/employees.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/employees.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/maintable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/project.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/statements.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/sumemp.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/~$atten.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/~$dept.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/~$emp(1).xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/attendance.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/contract.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/department.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +47,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sdsc5003@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sdsc5003@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sdsc5003@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="sdsc5003: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
@@ -42,6 +83,13 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1SmJoaWf90oXC4eEqFQGZLf1cjW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -126,7 +174,9 @@
       <workItem from="1574557389354" duration="22552000" />
       <workItem from="1574642291798" duration="2827000" />
       <workItem from="1574645296921" duration="606000" />
-      <workItem from="1574646676216" duration="1220000" />
+      <workItem from="1574646676216" duration="1715000" />
+      <workItem from="1574770235544" duration="998000" />
+      <workItem from="1574771934584" duration="10043000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>
@@ -156,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574645521505</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="department graph">
+      <created>1574657576939</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574657576939</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +240,8 @@
     <MESSAGE value="ready to edit department" />
     <MESSAGE value="update readme" />
     <MESSAGE value="requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements" />
+    <MESSAGE value="department graph" />
+    <option name="LAST_COMMIT_MESSAGE" value="department graph" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
