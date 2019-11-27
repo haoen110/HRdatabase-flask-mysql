@@ -19,7 +19,7 @@
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Database Logged as: {{session.username}}</a>
+    <a class="navbar-brand mr-1" href="index.html">Logged as: {{session.username}}</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -54,29 +54,29 @@
         <li class="nav-item">
             <a class="nav-link" href="recruitment.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>New Recruitment</span>
+                <span>Edit Recruitment</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="employee.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Employees</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="department.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Departments</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="contract.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Contracts</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="attendance.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Attendance</span>
             </a>
@@ -85,11 +85,14 @@
 
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
-
-            <h1>Department</h1>
-            <h4>Information about departments.</h4>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Departments</li>
+            </ol>
 
         <!-- Area Chart Example-->
         <script src="./static/vendor/chart.js/Chart.min.js"></script>

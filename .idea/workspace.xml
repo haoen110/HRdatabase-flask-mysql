@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/haoen110.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/statements.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/attendance.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/attendance.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/contract.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contract.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/department.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recruitment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recruitment.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +162,7 @@
       <workItem from="1574645296921" duration="606000" />
       <workItem from="1574646676216" duration="1715000" />
       <workItem from="1574770235544" duration="998000" />
-      <workItem from="1574771934584" duration="18557000" />
+      <workItem from="1574771934584" duration="23508000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>
@@ -199,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574657576939</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="basic visualization">
+      <created>1574826873662</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574826873662</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +234,8 @@
     <MESSAGE value="update readme" />
     <MESSAGE value="requirements" />
     <MESSAGE value="department graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="department graph" />
+    <MESSAGE value="basic visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic visualization" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

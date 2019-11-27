@@ -18,13 +18,10 @@
 
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-    <a class="navbar-brand mr-1" href="index.html">Database Logged as: {{session.username}}</a>
-
+    <a class="navbar-brand mr-1" href="index.html">Logged as: {{session.username}}</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-
 </nav>
 
 <div id="wrapper">
@@ -37,7 +34,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-      <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                href="#"
                id="pagesDropdown" role="button">
@@ -54,29 +51,29 @@
         <li class="nav-item">
             <a class="nav-link" href="recruitment.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>New Recruitment</span>
+                <span>Edit Recruitment</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="employee.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Employees</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="department.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Departments</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="contract.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Contracts</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="attendance.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Attendance</span>
             </a>
@@ -85,11 +82,15 @@
 
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
-
-            <h1>Employees</h1>
-            <h4>Simply input some slices of information about employees to search.</h4>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Employees</li>
+            </ol>
+            <h5>Simply input some slices of information about employees to fuzzy search.</h5>
             {% include '_messages.html' %}
             {% from "_formhelpers.html" import render_field %}
             <form method="POST" action="{{url_for('search_employee')}}" id="ef">
@@ -105,14 +106,6 @@
                     <input type="text" name="gender" class="form-control" placeholder="Gender"
                            autofocus="autofocus" value={{ request.form.gender }}>
                 </div>
-{#                <div class="form-group">#}
-{#                    <input type="text" name="age" class="form-control" placeholder="Age"#}
-{#                           autofocus="autofocus" value={{ request.form.age }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="salary" class="form-control" placeholder="Salary"#}
-{#                           autofocus="autofocus" value={{ request.form.salary }}>#}
-{#                </div>#}
                 <div class="form-group">
                     <input type="text" name="department" class="form-control" placeholder="Department"
                            autofocus="autofocus" value={{ request.form.department }}>
@@ -121,17 +114,6 @@
                     <input type="text" name="address" class="form-control" placeholder="Address"
                            autofocus="autofocus" value={{ request.form.address }}>
                 </div>
-{#                <div class="input-group mb-3">#}
-{#                  <div class="input-group-prepend">#}
-{#                    <label class="input-group-text" for="inputGroupSelect01">Department</label>#}
-{#                  </div>#}
-{#                  <select class="custom-select" id="inputGroupSelect01" form="ef">#}
-{#                    <option selected>Choose...</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Software</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Hardware</option>#}
-{#                  </select>#}
-{#                </div>#}
-
                 <p><input class="btn btn-primary" type="submit" value="Search"></p>
             </form>
 
@@ -152,7 +134,6 @@
                                 <th>Salary</th>
                                 <th>Department</th>
                                 <th>Address</th>
-{#                                <th></th>#}
                             </tr>
                             </thead>
                             <tbody>
@@ -165,12 +146,6 @@
                                 <td>{{employee[4]}}</td>
                                 <td>{{employee[5]}}</td>
                                 <td>{{employee[6]}}</td>
-{#                                <th>#}
-{#                                    <form action="{{url_for('delete_employee', eid=employee[0])}}" method="post">#}
-{#                                        <input type="hidden" name="method" value="DELETE">#}
-{#                                        <input type="submit" value="Delete" class="btn btn-danger">#}
-{#                                    </form>#}
-{#                                </th>#}
                             </tr>
                             {% endfor %}
                             </tbody>

@@ -33,8 +33,13 @@
 - Implement some basic visualization function below the search table.
 
 ### Department Description
+- Illustrate the basic information of departments.
+- Visualize the department budgets by bar chart.
+- Visualize the people distribution by pie chart.
 
 ### Contracts Description
+- Illustrate the basic information of contracts (start, end).
+- Visualize the number of 
 
 ### Attendance Description
 

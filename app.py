@@ -225,7 +225,9 @@ def contract():
 @is_logged_in
 def attendance():
     cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM attendance_owned;")
+    cur.execute('''select aid, ename, on_work, off_work
+                   from employees, attendance_owned
+                   where employees.eid=attendance_owned.eid;''')
     attendances = cur.fetchall()
     return render_template('attendance.html', attendances=attendances)
 

@@ -19,7 +19,7 @@
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Database Logged as: {{session.username}}</a>
+    <a class="navbar-brand mr-1" href="index.html">Logged as: {{session.username}}</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -54,29 +54,29 @@
         <li class="nav-item">
             <a class="nav-link" href="recruitment.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>New Recruitment</span>
+                <span>Edit Recruitment</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="employee.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Employees</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="department.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Departments</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="contract.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Contracts</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="attendance.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Attendance</span>
             </a>
@@ -88,60 +88,13 @@
 
         <div class="container-fluid">
 
-            <h1>Attendances</h1>
-            <h4>Information about attendances.</h4>
-{#            {% include '_messages.html' %}#}
-{#            {% from "_formhelpers.html" import render_field %}#}
-{#            <form method="POST" action="{{url_for('search_employee')}}" id="ef">#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="eid" class="form-control" placeholder="Eid"#}
-{#                           autofocus="autofocus" value={{ request.form.eid }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="ename" class="form-control" placeholder="Name"#}
-{#                           autofocus="autofocus" value={{ request.form.ename }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="gender" class="form-control" placeholder="Gender"#}
-{#                           autofocus="autofocus" value={{ request.form.gender }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="age" class="form-control" placeholder="Age"#}
-{#                           autofocus="autofocus" value={{ request.form.age }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="salary" class="form-control" placeholder="Salary"#}
-{#                           autofocus="autofocus" value={{ request.form.salary }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="department" class="form-control" placeholder="Department"#}
-{#                           autofocus="autofocus" value={{ request.form.department }}>#}
-{#                </div>#}
-{#                <div class="input-group mb-3">#}
-{#                  <div class="input-group-prepend">#}
-{#                    <label class="input-group-text" for="inputGroupSelect01">Department</label>#}
-{#                  </div>#}
-{#                  <select class="custom-select" id="inputGroupSelect01" form="ef">#}
-{#                    <option selected>Choose...</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Software</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Hardware</option>#}
-{#                  </select>#}
-{#                </div>#}
-{##}
-{#                <p><input class="btn btn-primary" type="submit" value="Search"></p>#}
-{#            </form>#}
-
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fas fa-chart-area"></i>
-                Attendance Line Plot
-            </div>
-            <div class="card-body">
-                <canvas height="30" id="myAreaChart" width="100%"></canvas>
-            </div>
-        </div>
-
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Attendance</li>
+            </ol>
+            <h5>Please search the name of employees or multiple text split by blank.</h5>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
@@ -152,11 +105,10 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>Aid</th>
-                                <th>Eid</th>
+                                <th>Year</th>
+                                <th>Name</th>
                                 <th>On Work</th>
                                 <th>Off Work</th>
-{#                                <th></th>#}
                             </tr>
                             </thead>
                             <tbody>
@@ -216,8 +168,6 @@
 <!-- Demo scripts for this page-->
 <script src="./static/js/demo/datatables-demo.js"></script>
 <script src="./static/js/demo/chart-area-demo.js"></script>
-{#<script src="./static/js/demo/chart-bar-demo.js"></script>#}
-{#<script src="./static/js/demo/chart-pie-demo.js"></script>#}
 
 </body>
 

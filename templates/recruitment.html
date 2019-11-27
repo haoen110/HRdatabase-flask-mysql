@@ -19,7 +19,7 @@
 <body id="page-top">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Database Logged as: {{session.username}}</a>
+    <a class="navbar-brand mr-1" href="index.html">Logged as: {{session.username}}</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -54,97 +54,47 @@
         <li class="nav-item">
             <a class="nav-link" href="recruitment.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>New Recruitment</span>
+                <span>Edit Recruitment</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="employee.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Employees</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="department.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Departments</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="contract.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Contracts</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="recruitment.html">
+            <a class="nav-link" href="attendance.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Attendance</span>
             </a>
         </li>
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Employees</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="employee.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Departments</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Contracts</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
-{#        <li class="nav-item dropdown">#}
-{#            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"#}
-{#               href="#"#}
-{#               id="pagesDropdown" role="button">#}
-{#                <i class="fas fa-fw fa-table"></i>#}
-{#                <span>Attendance</span>#}
-{#            </a>#}
-{#            <div aria-labelledby="pagesDropdown" class="dropdown-menu">#}
-{#                <h6 class="dropdown-header">Options:</h6>#}
-{#                <a class="dropdown-item" href="table1.html">Operation</a>#}
-{#                <a class="dropdown-item" href="#">Summary</a>#}
-{#                <div class="dropdown-divider"></div>#}
-{#            </div>#}
-{#        </li>#}
     </ul>
 
 
     <div id="content-wrapper">
 
         <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Edit recruitment</li>
+            </ol>
 
-            <h1>Add and Delete New Recruitment</h1>
+            <h5>Add or Delete an employee</h5>
             {% include '_messages.html' %}
             {% from "_formhelpers.html" import render_field %}
             <form method="POST" action="{{url_for('add_employee')}}" id="ef">
