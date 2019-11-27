@@ -1,3 +1,4 @@
+import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, flash, request, redirect, url_for, logging, session
 from wtforms import Form, StringField, TextAreaField, PasswordField, IntegerField, validators
@@ -85,7 +86,22 @@ def is_logged_in(f):
 @app.route('/index.html')
 @is_logged_in
 def index():
-    return render_template('index.html')
+    cur = db.engine.raw_connection().cursor()
+    cur.execute('''select * from departments,
+                (select emp.department, count(emp.eid) as Total
+                from employees emp
+                group by emp.department
+                order by emp.department) as tp
+                where departments.dname = tp.department;''')
+    departments = cur.fetchall()
+    # Enrolled Line Plot
+    df = pd.read_sql("""
+            select start_date
+            from contracts""", connection)
+    df['start_date'] = pd.to_datetime(df['start_date'])
+    l1 = pd.date_range(start=df['start_date'].min(), end=df['start_date'].max(), freq='M').strftime('%m/%d/%Y')
+    l2 = list(df['start_date'].groupby(df.start_date.dt.to_period("M")).agg('count').values.astype(int))
+    return render_template('index.html', departments=departments, l1=l1, l2=l2)
 
 
 # hrForm Class, Please add more attributes here! including dept's attr and contract's attr
@@ -190,9 +206,18 @@ def department():
 @is_logged_in
 def contract():
     cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM contracts;")
+    cur.execute('''
+        select cid, contracts.eid, ename, employees.department, contracts.start_date, contracts.finish_date
+        from employees, contracts
+        where employees.eid = contracts.eid;''')
     contracts = cur.fetchall()
-    return render_template('contract.html', contracts=contracts)
+    df = pd.read_sql("""
+        select start_date
+        from contracts""", connection)
+    df['start_date'] = pd.to_datetime(df['start_date'])
+    l1 = pd.date_range(start=df['start_date'].min(), end=df['start_date'].max(), freq='M').strftime('%m/%d/%Y')
+    l2 = list(df['start_date'].groupby(df.start_date.dt.to_period("M")).agg('count').values.astype(int))
+    return render_template('contract.html', contracts=contracts, l1=l1, l2=l2)
 
 
 # Attendance Page (Red One)
@@ -209,12 +234,6 @@ if __name__ == "__main__":
     app.secret_key = '123'
     app.run(debug=True)
     print("Server is running...")
-
-
-
-
-
-
 
 
 

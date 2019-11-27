@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sql/attendance.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/attendance.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/contracts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/contracts.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/departments.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/departments.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/employees.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/employees.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/maintable.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/project.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/statements.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/sumemp.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/~$atten.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/~$dept.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql/~$emp(1).xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/attendance.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contract.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/haoen110.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/statements.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/statements.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/demo/chart-pie-demo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contract.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contract.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/department.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,6 +55,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -105,6 +88,9 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates" />
     </key>
@@ -176,7 +162,7 @@
       <workItem from="1574645296921" duration="606000" />
       <workItem from="1574646676216" duration="1715000" />
       <workItem from="1574770235544" duration="998000" />
-      <workItem from="1574771934584" duration="10043000" />
+      <workItem from="1574771934584" duration="18557000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>

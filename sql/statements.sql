@@ -84,6 +84,7 @@ fields terminated by ','
 lines terminated by '\n'
 ignore 1 lines;
 
+
 -- count the number of employees in each departments
 select * from departments,
 (select emp.department, count(emp.eid) as Total
@@ -91,5 +92,10 @@ from employees emp
 group by emp.department
 order by emp.department) as tp
 where departments.dname = tp.department;
+
+--
+select cid, contracts.eid, ename, employees.department, contracts.start_date, contracts.finish_date
+from employees, contracts
+where employees.eid = contracts.eid;
 
 

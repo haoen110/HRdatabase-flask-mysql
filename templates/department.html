@@ -90,49 +90,9 @@
 
             <h1>Department</h1>
             <h4>Information about departments.</h4>
-{#            {% include '_messages.html' %}#}
-{#            {% from "_formhelpers.html" import render_field %}#}
-{#            <form method="POST" action="{{url_for('search_employee')}}" id="ef">#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="eid" class="form-control" placeholder="Eid"#}
-{#                           autofocus="autofocus" value={{ request.form.eid }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="ename" class="form-control" placeholder="Name"#}
-{#                           autofocus="autofocus" value={{ request.form.ename }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="gender" class="form-control" placeholder="Gender"#}
-{#                           autofocus="autofocus" value={{ request.form.gender }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="age" class="form-control" placeholder="Age"#}
-{#                           autofocus="autofocus" value={{ request.form.age }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="salary" class="form-control" placeholder="Salary"#}
-{#                           autofocus="autofocus" value={{ request.form.salary }}>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <input type="text" name="department" class="form-control" placeholder="Department"#}
-{#                           autofocus="autofocus" value={{ request.form.department }}>#}
-{#                </div>#}
-{#                <div class="input-group mb-3">#}
-{#                  <div class="input-group-prepend">#}
-{#                    <label class="input-group-text" for="inputGroupSelect01">Department</label>#}
-{#                  </div>#}
-{#                  <select class="custom-select" id="inputGroupSelect01" form="ef">#}
-{#                    <option selected>Choose...</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Software</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Hardware</option>#}
-{#                  </select>#}
-{#                </div>#}
-{##}
-{#                <p><input class="btn btn-primary" type="submit" value="Search"></p>#}
-{#            </form>#}
 
         <!-- Area Chart Example-->
-        <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
+        <script src="./static/vendor/chart.js/Chart.min.js"></script>
 
             <div class="row">
                 <div class="col-lg-8">
@@ -146,46 +106,27 @@
                         </div>
                         <script>
                             var ctx = document.getElementById("myBarChart");
-                            var myLineChart = new Chart(ctx, {
-                                type: 'bar',
-                                data: {
-                                    labels: ["软件", "硬件", "AI"],
-                                    datasets: [{
-                                        label: "Budget",
-                                        backgroundColor: "rgba(2,117,216,1)",
-                                        borderColor: "rgba(2,117,216,1)",
-                                        data: [20000, 30000, 100000],
-                                    }],
-                                },
-                                options: {
-                                    scales: {
-                                        xAxes: [{
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                maxTicksLimit: 6
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            ticks: {
-                                                min: 0,
-                                                max: 100000,
-                                                maxTicksLimit: 5
-                                            },
-                                            gridLines: {
-                                                display: true
-                                            }
-                                        }],
-                                    },
-                                    legend: {
-                                        display: true
-                                    }
-                                }
+                            var myLineChart = new Chart(ctx,
+                            {type: 'bar',
+                             data:
+                                 {
+                                    labels: [{% for item in departments %}"{{item[1]}}",{% endfor %}],
+                                    datasets: [{label: "Budget",
+                                                backgroundColor: "rgba(2,117,216,1)",
+                                                borderColor: "rgba(2,117,216,1)",
+                                                data: [{% for item in departments %}"{{item[4]}}",{% endfor %}]
+                                               }],
+                                 },
+                             options:
+                                 {scales: {xAxes: [{gridLines: {display: false}, ticks: {maxTicksLimit: 10}}],
+                                           yAxes: [{ticks: {min: 0, max: 100000, maxTicksLimit: 5}, gridLines: {display: true}}]},
+                                           legend: {display: true}
+                                 }
                             });
                         </script>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <div class="card mb-3">
                         <div class="card-header">
@@ -195,21 +136,20 @@
                         <div class="card-body">
                             <canvas height="100" id="myPieChart" width="100%"></canvas>
                         </div>
-
                         <script>
                             var ctx = document.getElementById("myPieChart");
                             var myPieChart = new Chart(ctx, {
-                                type: 'pie',
-                                data: {
-                                    labels: ["软件", "硬件", "AI"],
-                                    datasets: [{
-                                        data: [15, 20, 35],
-                                        backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
-                                    }],
-                                },
+                              type: 'pie',
+                              data: {
+                                labels: [{% for item in departments %}"{{item[1]}}",{% endfor %}],
+                                {#labels: ["Security Department", "Financial Department", "Official Department", "Peace Hotel", "Exhibition Center", "Support Department", "Property Department"],#}
+                                datasets: [{
+                                  data: [{% for item in departments %}"{{item[6]}}",{% endfor %}],
+                                  backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#a52a2a', 'cornsilk', 'deeppink'],
+                                }],
+                              },
                             });
                         </script>
-
                     </div>
                 </div>
             </div>
@@ -284,7 +224,7 @@
 <script src="./static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Page level plugin JavaScript-->
-<script src="./static/vendor/chart.js/Chart.min.js"></script>
+{#<script src="./static/vendor/chart.js/Chart.min.js"></script>#}
 <script src="./static/vendor/datatables/jquery.dataTables.js"></script>
 <script src="./static/vendor/datatables/dataTables.bootstrap4.js"></script>
 
