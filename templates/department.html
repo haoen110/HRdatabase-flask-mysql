@@ -145,7 +145,6 @@
                               type: 'pie',
                               data: {
                                 labels: [{% for item in departments %}"{{item[1]}}",{% endfor %}],
-                                {#labels: ["Security Department", "Financial Department", "Official Department", "Peace Hotel", "Exhibition Center", "Support Department", "Property Department"],#}
                                 datasets: [{
                                   data: [{% for item in departments %}"{{item[6]}}",{% endfor %}],
                                   backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#a52a2a', 'cornsilk', 'deeppink'],
@@ -175,7 +174,6 @@
                                 <th>Manager</th>
                                 <th>Budget</th>
                                 <th>Total</th>
-{#                                <th></th>#}
                             </tr>
                             </thead>
                             <tbody>

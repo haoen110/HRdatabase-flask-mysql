@@ -119,7 +119,9 @@ class HRForm(Form):
 @is_logged_in
 def recruitment():
     cur = db.engine.raw_connection().cursor()
-    cur.execute("SELECT * FROM employees;")
+    cur.execute('''select employees.eid, cid, ename, gender, age, salary, department
+                   from employees, contracts
+                   where employees.eid=contracts.eid''')
     employees = cur.fetchall()
     return render_template('recruitment.html', employees=employees)
 
@@ -136,8 +138,10 @@ def add_employee():
         salary = form.salary.data
         department = form.department.data
         try:
-            db.engine.execute("INSERT INTO employees(eid, ename, gender, age, salary, department) VALUES (%s, %s, %s, %s, %s, %s)",
-                        (eid, ename, gender, age, salary, department))
+            db.engine.execute('''
+                    INSERT INTO employees(eid, ename, gender, age, salary, department) 
+                    VALUES (%s, %s, %s, %s, %s, %s);''',
+                    (eid, ename, gender, age, salary, department))
         except:
             flash('Insert Unsuccessfully, Please Check Again!', 'danger')
             return redirect(url_for('recruitment'))
@@ -161,7 +165,15 @@ def employee():
     cur = db.engine.raw_connection().cursor()
     cur.execute("SELECT * FROM employees;")
     employees = cur.fetchall()
-    return render_template('employee.html', employees=employees)
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT dname FROM departments;")
+    departments = cur.fetchall()
+    l = []
+    for i in departments:
+        l.append(i[0])
+    print(l)
+    departments = l
+    return render_template('employee.html', employees=employees, departments=departments)
 
 # Selection of Employee
 @app.route('/search_employee', methods=['POST', 'GET'])
@@ -171,21 +183,38 @@ def search_employee():
     eid = form.eid.data
     ename = form.ename.data
     gender = form.gender.data
-    department = form.department.data
+    department = request.form['departments']
     address = form.address.data
+    # list of dept.
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT dname FROM departments;")
+    departments = cur.fetchall()
+    l = []
+    for i in departments:
+        l.append(i[0])
+    print(l)
+    departments = l
+    # search
     cur = db.engine.raw_connection().cursor()
     if eid is not None:
+        print(eid)
         cur.execute("select * from employees where eid =%d;" % eid)
+    elif gender == 'flag':
+        cur.execute("select * from employees \
+                     where ename like '%%%s%%'\
+                     and department like '%%%s%%'\
+                     and address like '%%%s%%';"
+                    % (ename, department, address))
     else:
         cur.execute("select * from employees \
                      where ename like '%%%s%%'\
-                     and gender like '%%%s%%'\
+                     and gender = '%s'\
                      and department like '%%%s%%'\
                      and address like '%%%s%%';"
                     % (ename, gender, department, address))
     employees = cur.fetchall()
     flash('Search Successfully!', 'success')
-    return render_template('employee.html', employees=employees)
+    return render_template('employee.html', employees=employees, departments=departments)
 
 # Department Page (Yellow One)
 @app.route('/department.html', methods=['GET', 'POST'])
