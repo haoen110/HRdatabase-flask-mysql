@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d82c6dca-7ddf-4457-a2a1-01627560be48.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d82c6dca-7ddf-4457-a2a1-01627560be48/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/department.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/department.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/attendance.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/contracts.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/departments.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/employees.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/employee.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/recruitment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recruitment.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,6 +77,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlserver&#10;mysql" />
@@ -84,7 +89,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -93,18 +98,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="database" type="Python.FlaskServer">
@@ -124,23 +117,15 @@
     </configuration>
   </component>
   <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@64fe445f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@64fe445f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@c30844d" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -162,7 +147,10 @@
       <workItem from="1574646676216" duration="1715000" />
       <workItem from="1574770235544" duration="998000" />
       <workItem from="1574771934584" duration="23556000" />
-      <workItem from="1574904173911" duration="8289000" />
+      <workItem from="1574904173911" duration="8850000" />
+      <workItem from="1574914552876" duration="659000" />
+      <workItem from="1574937601556" duration="761000" />
+      <workItem from="1575515910807" duration="5404000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>
@@ -213,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574868753822</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="11.28">
+      <created>1574913322907</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574913322907</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +238,8 @@
     <MESSAGE value="department graph" />
     <MESSAGE value="basic visualization" />
     <MESSAGE value="rearrange" />
-    <option name="LAST_COMMIT_MESSAGE" value="rearrange" />
+    <MESSAGE value="11.28" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.28" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

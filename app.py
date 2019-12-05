@@ -11,7 +11,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@127.0.0.1/s
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
 db = SQLAlchemy(app)
 connection = db.engine.raw_connection()
-cur = connection.cursor()
 
 
 # Create registration form
@@ -31,6 +30,7 @@ def register():
         email = form.email.data
         password = sha256_crypt.hash(str(form.password.data))
         # Execute MySQL
+        cur = db.engine.raw_connection().cursor()
         cur.execute("SELECT * FROM users WHERE username = %s;", username)
         result = cur.fetchone()
         if result is not None:
@@ -49,6 +49,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password_candidate = request.form['password']
+        cur = db.engine.raw_connection().cursor()
         cur.execute("SELECT * FROM users WHERE username = %s;", username)
         result = cur.fetchone()
         print(result)
@@ -107,12 +108,15 @@ def index():
 # hrForm Class, Please add more attributes here! including dept's attr and contract's attr
 class HRForm(Form):
     eid = IntegerField('Eid', [validators.DataRequired()])
+    cid = IntegerField('Eid', [validators.DataRequired()])
     ename = StringField('Name', [validators.Length(min=1)])
     gender = StringField('Gender', [validators.Length(min=1)])
     age = IntegerField('Age', [validators.DataRequired()])
     salary = IntegerField('Salary', [validators.DataRequired()])
     department = StringField('Department', [validators.Length(min=1)])
     address = StringField('Address', [validators.Length(min=1)])
+    start = StringField('Start Date', [validators.DataRequired()])
+    end = StringField('End Date', [validators.DataRequired()])
 
 # Recruitment Page (for addition and deletion of employees)
 @app.route('/recruitment.html', methods=['GET', 'POST'])
@@ -123,31 +127,45 @@ def recruitment():
                    from employees, contracts
                    where employees.eid=contracts.eid''')
     employees = cur.fetchall()
-    return render_template('recruitment.html', employees=employees)
+    cur = db.engine.raw_connection().cursor()
+    cur.execute("SELECT dname FROM departments;")
+    departments = cur.fetchall()
+    l = []
+    for i in departments:
+        l.append(i[0])
+    # print(l)
+    departments = l
+    return render_template('recruitment.html', employees=employees, departments=departments)
+
 
 # Emp Addition
-@app.route('/add_employee', methods=['POST'])
+@app.route('/add_employee', methods=['POST', 'GET'])
 @is_logged_in
 def add_employee():
+    print("adddddddddddddddddddddddd")
     form = HRForm(request.form)
-    if request.method == 'POST' and form.validate():
-        eid = form.eid.data
-        ename = form.ename.data
-        gender = form.gender.data
-        age = form.age.data
-        salary = form.salary.data
-        department = form.department.data
-        try:
-            db.engine.execute('''
-                    INSERT INTO employees(eid, ename, gender, age, salary, department) 
-                    VALUES (%s, %s, %s, %s, %s, %s);''',
-                    (eid, ename, gender, age, salary, department))
-        except:
-            flash('Insert Unsuccessfully, Please Check Again!', 'danger')
-            return redirect(url_for('recruitment'))
-        flash('Insert Successfully!', 'success')
+    eid = form.eid.data
+    cid = form.cid.data
+    ename = form.ename.data
+    gender = form.gender.data
+    age = form.age.data
+    salary = form.salary.data
+    department = form.department.data
+    address = form.address.data
+    start = form.start.data
+    end = form.start.data
+    try:
+        # db.engine.execute('''
+        #         INSERT INTO employees(eid, ename, gender, age, salary, department)
+        #         VALUES (%s, %s, %s, %s, %s, %s);''',
+        #         (eid, ename, gender, age, salary, department))
+        print("**************", eid, cid, ename, gender, age, salary, department, address, start, end)
+    except:
+        flash('Insert Unsuccessfully, Please Check Again!', 'danger')
         return redirect(url_for('recruitment'))
+    flash('Insert Successfully!', 'success')
     return render_template('recruitment.html', form=form)
+
 
 # Emp Deletion
 @app.route('/recruitment.html/<string:eid>', methods=['GET', 'POST'])
@@ -171,7 +189,7 @@ def employee():
     l = []
     for i in departments:
         l.append(i[0])
-    print(l)
+    # print(l)
     departments = l
     return render_template('employee.html', employees=employees, departments=departments)
 
@@ -192,12 +210,12 @@ def search_employee():
     l = []
     for i in departments:
         l.append(i[0])
-    print(l)
+    # print(l)
     departments = l
     # search
     cur = db.engine.raw_connection().cursor()
     if eid is not None:
-        print(eid)
+        # print(eid)
         cur.execute("select * from employees where eid =%d;" % eid)
     elif gender == 'flag':
         cur.execute("select * from employees \

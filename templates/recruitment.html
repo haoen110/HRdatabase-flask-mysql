@@ -97,42 +97,74 @@
             <h5>Add or Delete an employee</h5>
             {% include '_messages.html' %}
             {% from "_formhelpers.html" import render_field %}
-            <form method="POST" action="{{url_for('add_employee')}}" id="ef">
-                <div class="form-group">
-                    <input type="text" name="eid" class="form-control" placeholder="Eid" required="required"
+            <form method="POST" action="{{url_for('add_employee')}}">
+                <form>
+                    <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" name="eid" class="form-control" placeholder="Eid" required="require"
                            autofocus="autofocus" value={{ request.form.eid }}>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="ename" class="form-control" placeholder="Name" required="required"
+                        </div>
+                        <div class="col">
+                            <input type="text" name="cid" class="form-control" placeholder="Cid" required="require"
+                           autofocus="autofocus" value={{ request.form.cid }}>
+                        </div>
+                        <div class="col">
+                            <input type="text" name="ename" class="form-control" placeholder="Name" required="require"
                            autofocus="autofocus" value={{ request.form.ename }}>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="gender" class="form-control" placeholder="Gender" required="required"
-                           autofocus="autofocus" value={{ request.form.gender }}>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="age" class="form-control" placeholder="Age" required="required"
+                        </div>
+                        <div class="col">
+                            <select name="gender" class="browser-default custom-select">
+                                <option value="flag" selected>Please Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="text" name="age" class="form-control" placeholder="Age" required="require"
                            autofocus="autofocus" value={{ request.form.age }}>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="salary" class="form-control" placeholder="Salary" required="required"
+                        </div>
+                    </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" name="salary" class="form-control" placeholder="Salary" required="require"
                            autofocus="autofocus" value={{ request.form.salary }}>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="department" class="form-control" placeholder="Department" required="required"
-                           autofocus="autofocus" value={{ request.form.department }}>
-                </div>
-{#                <div class="input-group mb-3">#}
-{#                  <div class="input-group-prepend">#}
-{#                    <label class="input-group-text" for="inputGroupSelect01">Department</label>#}
-{#                  </div>#}
-{#                  <select class="custom-select" id="inputGroupSelect01" form="ef">#}
-{#                    <option selected>Choose...</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Software</option>#}
-{#                    <option name="department" value={{ request.form.department }}>Hardware</option>#}
-{#                  </select>#}
-{#                </div>#}
-
+                        </div>
+                        <div class="col">
+                            <select name="departments" class="browser-default custom-select">
+                                 <option value=" " selected>Please Select Department</option>
+                                    {% for department in departments %}
+                                <option value="{{department}}">{{department}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="text" name="address" class="form-control" placeholder="Address" required="require"
+                           autofocus="autofocus" value={{ request.form.address }}>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="control-label" for="date">Start Date</label>
+                            <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
+                           autofocus="autofocus" value={{ request.form.start }}>
+                        </div>
+                        <div class="col">
+                            <label class="control-label" for="date">End Date</label>
+                            <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
+                           autofocus="autofocus" value={{ request.form.end }}>
+                        </div>
+                    </div>
+                    </div>
+                </form>
                 <p><input class="btn btn-primary" type="submit" value="Add"></p>
             </form>
 
