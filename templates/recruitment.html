@@ -85,20 +85,18 @@
 
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
+            <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.html">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">Edit recruitment</li>
             </ol>
-
             <h5>Add or Delete an employee</h5>
             {% include '_messages.html' %}
             {% from "_formhelpers.html" import render_field %}
             <form method="POST" action="{{url_for('add_employee')}}">
-                <form>
                     <div class="form-group">
                     <div class="form-row">
                         <div class="col">
@@ -126,45 +124,42 @@
                         </div>
                     </div>
                     </div>
-                </form>
-                <form>
-                    <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" name="salary" class="form-control" placeholder="Salary" required="require"
-                           autofocus="autofocus" value={{ request.form.salary }}>
-                        </div>
-                        <div class="col">
-                            <select name="departments" class="browser-default custom-select">
-                                 <option value=" " selected>Please Select Department</option>
-                                    {% for department in departments %}
-                                <option value="{{department}}">{{department}}</option>
-                                    {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="address" class="form-control" placeholder="Address" required="require"
-                           autofocus="autofocus" value={{ request.form.address }}>
-                        </div>
+                <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" name="salary" class="form-control" placeholder="Salary" required="require"
+                       autofocus="autofocus" value={{ request.form.salary }}>
                     </div>
+                    <div class="col">
+                        <select name="departments" class="browser-default custom-select">
+                             <option value=" " selected>Please Select Department</option>
+                                {% for department in departments %}
+                            <option value="{{department}}">{{department}}</option>
+                                {% endfor %}
+                        </select>
                     </div>
-                </form>
-                <form>
-                    <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <label class="control-label" for="date">Start Date</label>
-                            <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
-                           autofocus="autofocus" value={{ request.form.start }}>
-                        </div>
-                        <div class="col">
-                            <label class="control-label" for="date">End Date</label>
-                            <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
-                           autofocus="autofocus" value={{ request.form.end }}>
-                        </div>
+                    <div class="col">
+                        <input type="text" name="address" class="form-control" placeholder="Address" required="require"
+                       autofocus="autofocus" value={{ request.form.address }}>
                     </div>
+                </div>
+                </div>
+
+                <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="control-label" for="date">Start Date</label>
+                        <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
+                       autofocus="autofocus" value={{ request.form.start }}>
                     </div>
-                </form>
+                    <div class="col">
+                        <label class="control-label" for="date">End Date</label>
+                        <input type="text" name="start" class="form-control" placeholder="YYYY/MM/DD" required="require"
+                       autofocus="autofocus" value={{ request.form.end }}>
+                    </div>
+                </div>
+                </div>
+
                 <p><input class="btn btn-primary" type="submit" value="Add"></p>
             </form>
 
