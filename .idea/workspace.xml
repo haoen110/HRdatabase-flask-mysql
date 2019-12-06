@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2baa4b2a-705b-40bd-ba18-428ffc82420b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recruitment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recruitment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +144,7 @@
       <workItem from="1574937601556" duration="761000" />
       <workItem from="1575515910807" duration="10008000" />
       <workItem from="1575597657728" duration="4254000" />
+      <workItem from="1575616163049" duration="285000" />
     </task>
     <task id="LOCAL-00001" summary="ready to edit department">
       <created>1574586733803</created>
@@ -210,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575531948603</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="complete 1">
+      <created>1575616174806</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575616174806</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,17 +248,20 @@
     <MESSAGE value="rearrange" />
     <MESSAGE value="11.28" />
     <MESSAGE value="add problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="add problem" />
+    <MESSAGE value="complete 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete 1" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="128" key="CommitChangelistDialog2" timestamp="1575531948389">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="347" y="110" key="CommitChangelistDialog2" timestamp="1575616174472">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="347" y="110" key="CommitChangelistDialog2/0.23.1440.877/-1600.23.1600.877@0.23.1440.877" timestamp="1575616174472" />
     <state x="463" y="128" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1575531948389" />
-    <state x="523" y="264" key="Vcs.Push.Dialog.v2" timestamp="1575531950428">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="392" y="223" key="Vcs.Push.Dialog.v2" timestamp="1575616177372">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="392" y="223" key="Vcs.Push.Dialog.v2/0.23.1440.877/-1600.23.1600.877@0.23.1440.877" timestamp="1575616177372" />
     <state x="523" y="264" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1575531950428" />
     <state x="374" y="296" key="com.intellij.ide.util.TipDialog" timestamp="1575616163575">
       <screen x="0" y="23" width="1440" height="877" />
